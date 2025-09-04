@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Version>1.0.1</Version>
+		<Authors>eia485</Authors>
+		<Product>$(AssemblyName)</Product>
+		<RepositoryUrl>https://github.com/EIA485/Neos$(Product)</RepositoryUrl>
+
+		<PackageId>net.$(Authors).$(Product)</PackageId>
+		<RootNamespace>$(Product)</RootNamespace>
+		
+		<RestoreAdditionalProjectSources>https://nuget-modding.resonite.net/v3/index.json</RestoreAdditionalProjectSources>
+		
+		<TargetFramework>net9.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Deterministic>true</Deterministic>
+		
+		<GamePath>$(ResonitePath)/</GamePath>
+		<GamePath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Resonite\')">C:\Program Files (x86)\Steam\steamapps\common\Resonite\</GamePath>
+		<GamePath Condition="Exists('$(HOME)\.steam\steam\steamapps\common\Resonite\')">$(HOME)/.steam/steam/steamapps/common/Resonite/</GamePath>
+		<GamePath Condition="Exists('E:\Programs\Steam\steamapps\common\Resonite\')">E:\Programs\Steam\steamapps\common\Resonite\</GamePath>
+		<GamePath Condition="Exists('E:\Games\Steam\steamapps\common\Resonite\')">E:\Games\Steam\steamapps\common\Resonite\</GamePath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.ResonitePluginInfoProps" Version="3.*" />
+		<Reference Include="0Harmony">
+			<HintPath>$(GamePath)BepInEx\core\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx.Core">
+			<HintPath>$(GamePath)BepInEx\core\BepInEx.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx.NET.Common">
+			<HintPath>$(GamePath)BepInEx\core\BepInEx.NET.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInExResoniteShim">
+			<HintPath>$(GamePath)BepInEx\plugins\BepInExResoniteShim.dll</HintPath>
+		</Reference>
+		<Reference Include="FrooxEngine">
+		    <HintPath>$(GamePath)FrooxEngine.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)BepInEx\plugins" />
+		<Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(GamePath)BepInEx\plugins" />
+		<Message Text="Copied $(TargetFileName) and $(TargetName).pdb to $(GamePath)BepInEx\plugins" Importance="high" />
+	</Target>
+</Project>

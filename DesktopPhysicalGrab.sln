@@ -1,5 +1,5 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopPhisicalGrab", "DesktopPhisicalGrab\DesktopPhisicalGrab.csproj", "{0322B2EF-7452-479D-BAE2-FCAB75033337}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopPhysicalGrab", "DesktopPhysicalGrab.csproj", "{0322B2EF-7452-479D-BAE2-FCAB75033337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
