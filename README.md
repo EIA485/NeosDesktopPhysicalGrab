@@ -1,6 +1,6 @@
 # DesktopPhysicalGrab
 
-A [BepisLoader](https://github.com/ResoniteModding/BepisLoader) mod for [Resonite](https://resonite.com/) that enables Physical grabing in screen mode.
+A [BepisLoader](https://github.com/ResoniteModding/BepisLoader) mod for [Resonite](https://resonite.com/) that enables physical grabing in screen mode.
 
 ## Installation
 1. Install [BepisLoader](https://github.com/ResoniteModding/BepisLoader).
